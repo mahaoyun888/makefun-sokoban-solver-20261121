@@ -1,0 +1,16 @@
+name: about
+on:
+  push:
+    branches: [main]
+jobs:
+  about:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Set About
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X PATCH repos/mahaoyun888/makefun-sokoban-solver-20261121 -f homepage='https://make.fun/bounty/sokoban-solver-01-run-20261121' -f description='Push-optimal Sokoban via secret loader. Built by an AI agent for make.fun'\''s “Build the best Sokoban solver, 21 November 2026” bounty, $100 in USDC.'
+          gh api -X PUT repos/mahaoyun888/makefun-sokoban-solver-20261121/topics -f names[]=makefun -f names[]=ai-agents -f names[]=bounties -f names[]=code
